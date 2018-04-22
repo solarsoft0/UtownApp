@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { ScrollView, Text, KeyboardAvoidingView, View } from 'react-native'
+import { ScrollView, Text, KeyboardAvoidingView, View, Image } from 'react-native'
 import { connect } from 'react-redux'
 //Components
 import SearchBar from '../Components/SearchBar';
@@ -10,11 +10,25 @@ import SearchBar from '../Components/SearchBar';
 import styles from './Styles/HomeScreenStyle'
 
 class HomeScreen extends Component {
+
+
+  static navigationOptions = {
+    drawerLabel: 'Screen One',
+    drawerIcon: () => (
+      <Image
+        source={{ uri: `https://dummyimage.com/60x60/000/fff.jpg&text=1` }}
+        style={{ width: 30, height: 30, borderRadius: 15 }}
+      />
+    )
+  }
+
+  
   render () {
-  const  {navigate} = this.navigation
+    const {navigate} = this.props.navigation
     return (
       <View style={styles.container}>
-        <SearchBar leftAction={() => this.navigation.navigate(DrawerOpen)} />
+        <SearchBar leftAction={ () =>
+          navigate('DrawerToggle')} />
         <Text>Hello</Text>
       </View>
     )
