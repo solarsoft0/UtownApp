@@ -12,7 +12,14 @@ import styles from './Styles/HomeScreenStyle'
 
 class HomeScreen extends Component {
 
+  constructor(props) {
+    super(props)
+    this.state = {
+      showCalender: true
+    }
+  }
 
+  
   static navigationOptions = {
     drawerLabel: 'Screen One',
     drawerIcon: () => (
@@ -23,25 +30,25 @@ class HomeScreen extends Component {
     )
   }
 
+  handleShowCalender = () => {
+    alert(2)
+    this.setState(previousState => {
+      return { showCalender: !previousState.showCalender }
+    })
+  }
+
+
   
   render () {
     const {navigate} = this.props.navigation
     return (
       <View style={styles.container}>
         <Image
-          style={{
-            backgroundColor: '#ccc',
-            flex: 1,
-            resizeMode: 'cover',
-            position: 'absolute',
-            width: '100%',
-            height: '100%',
-            justifyContent: 'center',
-          }}
+          style={styles.backgroundImage}
           source={Images.map}
         />
         <SearchBar leftAction={ () =>
-          navigate('DrawerToggle')} />
+          navigate('DrawerToggle')} showCalender={this.state.showCalender} rightAction={this.handleShowCalender} />
         <View style={styles.body}></View>
 
         <View style={styles.footer}>

@@ -18,23 +18,46 @@ export default class SearchBar extends Component {
   //   someSetting: false
   // }
   constructor (props) {
+
       super(props)
+      this.state = {
+        showCalender: false
+      }
+
+      
+
+  }
+
+  componentWillMount (props) {
+const {showCalender} = this.props;
+
+this.setState({showCalender})
   }
 
  
-
-
 
   render () {
       const { navigation } = this.props
 
         return (
-            
+            <View style={[styles.wrapper, this.state.showCalender && styles.container]} >
             <View style={styles.container}>
-                <TouchableOpacity onPress={this.props.leftAction}      
+            {this.state.showCalender ? <View style={styles.searchContainer}>
+               <TouchableOpacity onPress={this.props.leftAction}      
  style={styles.menuIcon}><Image source={Images.menu} style={styles.icon}/></TouchableOpacity>
                 <View style={styles.inputContainer}><TextInput placeholder='Search Local' style= {styles.input} /></View>
+                </View> : <Text style={styles.calenderText}>Peek into the Future</Text>}
+
                 <TouchableOpacity onPress={this.props.rightAction} style={styles.menuIcon}><Image source={Images.calender} style={styles.icon} /></TouchableOpacity> 
+            </View>
+                {!this.state.showCalender && <View style={styles.container}>
+          <View style={styles.searchContainer}>
+               <TouchableOpacity onPress={this.props.leftAction}      
+ style={styles.menuIcon}><Image source={Images.menu} style={styles.icon}/></TouchableOpacity>
+                <View style={styles.inputContainer}><TextInput placeholder='Search Local' style= {styles.input} /></View>
+                </View> 
+
+                </View>}
             </View>
         )
       }
