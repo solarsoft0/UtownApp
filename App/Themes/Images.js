@@ -10,6 +10,7 @@ const images = {
   avatar: require('../Images/avatar.png'),
   arrowDown: require('../Images/arrow_down.png'),
   arrowUp: require('../Images/arrow_up.png'),
+  map: require('../Images/map.jpg'),
   
 }
 

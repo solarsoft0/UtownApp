@@ -17,7 +17,9 @@ export default StyleSheet.create({
   bigContainer: {
     paddingHorizontal: 70,
     height: 50,
-    justifyContent: 'center'
+    justifyContent: 'center',
+    borderRadius: 25,
+
   }
 
 })

@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { ScrollView, Text, KeyboardAvoidingView, View, Image } from 'react-native'
 import { connect } from 'react-redux'
-import {Colors}  from '../Themes'
+import {Colors, Images}  from '../Themes'
 //Components
 import SearchBar from '../Components/SearchBar';
 // Add Actions - replace 'Your' with whatever your reducer is called :)
@@ -28,9 +28,23 @@ class HomeScreen extends Component {
     const {navigate} = this.props.navigation
     return (
       <View style={styles.container}>
+        <Image
+          style={{
+            backgroundColor: '#ccc',
+            flex: 1,
+            resizeMode: 'cover',
+            position: 'absolute',
+            width: '100%',
+            height: '100%',
+            justifyContent: 'center',
+          }}
+          source={Images.map}
+        />
         <SearchBar leftAction={ () =>
           navigate('DrawerToggle')} />
-        <Text>Hello</Text>
+        <View style={styles.body}></View>
+
+        <View style={styles.footer}>
         <View style={styles.labelGroup}>
           <RoundedLabelButton bgColor="#50AE4A">7 Posts</RoundedLabelButton>
           <RoundedLabelButton bgColor="#1A65B2">16 Events</RoundedLabelButton>
@@ -42,6 +56,8 @@ class HomeScreen extends Component {
           <RoundedLabelButton bgColor="#F8FBF9" color={Colors.deepAsh} size="big">Downtown</RoundedLabelButton>
           <RoundedLabelButton bgColor="#F8FBF9" color={Colors.deepAsh} size="big">Downtown</RoundedLabelButton>
         </ScrollView>
+        </View>
+
 
       </View>
     )

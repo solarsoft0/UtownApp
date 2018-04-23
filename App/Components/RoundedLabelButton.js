@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 // import PropTypes from 'prop-types';
-import { View, Text } from 'react-native'
+import { View, Text, TouchableOpacity } from 'react-native'
 import styles from './Styles/RoundedLabelButtonStyle'
 export default class RoundedLabelButton extends Component {
 
@@ -58,9 +58,10 @@ export default class RoundedLabelButton extends Component {
   render() {
 
     return (
-      <View style={[styles.container, this.state.containerCustomStyle, this.props.size == "big" ? styles.bigContainer : "" ]}>
+      <TouchableOpacity activeOpacity={0.9}
+ style={[styles.container, this.state.containerCustomStyle, this.props.size == "big" ? styles.bigContainer : "" ]}>
         <Text style={[styles.defaultText, this.state.customStyle]}>{this.getText()}</Text>
-      </View>
+      </TouchableOpacity>
     )
   }
 }

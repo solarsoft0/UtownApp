@@ -7,16 +7,19 @@ export default StyleSheet.create({
   container: {
     flex:1,
     paddingTop:40,
-    paddingBottom: 20,
     backgroundColor: 'red',
     justifyContent: 'space-between'
   },
+  body: {
+flex:2
+  },
+  footer: {
+  },
   labelGroup: {
-    maxHeight:50,
     flexDirection: 'row',
-    justifyContent: 'center'
+    justifyContent: 'center',
   },
   footerLabelGroup:  {
-    maxHeight: 40,
+    marginVertical:15
   }
 })
