@@ -10,19 +10,23 @@ export default class RoundedLabelButton extends Component {
   constructor(props) {
     super(props);
 
-    const color = props.color || 'red';
+    const color = props.color || 'white';
     const bgColor = props.bgColor || 'transparent'
+    const containerStyle = props.style || null
     const style = props.style || null
     const customSize = props.customSize || null
-    let font = '';
 
 
-
-
-    let customStyle = [font, style,
+    let customStyle = [style,
       {
         color: color,
-        fontSize: customSize
+        fontSize: customSize,
+        fontWeight:'bold'
+      }
+    ]
+    let containerCustomStyle = [containerStyle,
+      {
+        backgroundColor: bgColor,
       }
     ]
 
@@ -36,8 +40,12 @@ export default class RoundedLabelButton extends Component {
     };
 
     removeEmpty(customStyle)
+    removeEmpty(containerCustomStyle)
 
-    this.state = { customStyle: customStyle };
+    this.state = { 
+      customStyle,
+      containerCustomStyle
+    };
 
   }
 
@@ -50,7 +58,9 @@ export default class RoundedLabelButton extends Component {
   render() {
 
     return (
-      <Text style={this.state.customStyle}>{this.getText()}</Text>
+      <View style={[styles.container, this.state.containerCustomStyle, this.props.size == "big" ? styles.bigContainer : "" ]}>
+        <Text style={[styles.defaultText, this.state.customStyle]}>{this.getText()}</Text>
+      </View>
     )
   }
 }

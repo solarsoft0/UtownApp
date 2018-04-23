@@ -20,7 +20,8 @@ const DrawerStack = DrawerNavigator({
 },
   {
     initialRouteName: "HomeScreen",
-    contentComponent: DrawerContainer
+    contentComponent: DrawerContainer,
+    drawerWidth:320
 
   }
 
@@ -29,14 +30,8 @@ const DrawerStack = DrawerNavigator({
 const DrawerNavigation = StackNavigator({
   DrawerStack: { screen: DrawerStack }
 }, {
-    headerMode: 'float',
-    navigationOptions: ({ navigation }) => ({
-      headerStyle: { backgroundColor: '#4C3E54' },
-      title: 'Welcome!',
-      headerTintColor: 'white',
-      headerLeft: <Text onPress={() =>
-        navigation.navigate('DrawerToggle')}>Menu</Text>
-    })
+    headerMode: 'none',
+  
   })
 
 

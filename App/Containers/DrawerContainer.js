@@ -1,49 +1,60 @@
 import React from 'react'
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, ScrollView} from 'react-native'
 import { NavigationActions } from 'react-navigation'
-
+import DrawerHeader from '../Components/DrawerHeader'
+import DrawerTab from '../Components/DrawerTab'
+import DrawerSectionTitle from '../Components/DrawerSectionTitle'
+import {Images, Colors, images }  from '../Themes'
+import styles from './Styles/DrawerContainerStyle'
 export default class DrawerContainer extends React.Component {
 
+  constructor (props) {
+super(props)
+this.state = {
+showSpecial: true
+}
+
+  }
+
+
+  handleShowSpecial = () => {
+    this.setState(previousState => {
+      return { showSpecial: !previousState.showSpecial }
+    })
+  }
   render() {
     const { navigation } = this.props
     return (
       <View style={styles.container}>
-        <Text
-          onPress={() => navigation.navigate('screen1')}
-          style={styles.uglyDrawerItem}>
-          Screen 1
-        </Text>
-        <Text
-          onPress={() => navigation.navigate('screen2')}
-          style={styles.uglyDrawerItem}>
-          Screen 2
-        </Text>
-        <Text
-          onPress={() => navigation.navigate('screen3')}
-          style={styles.uglyDrawerItem}>
-          Screen 3
-        </Text>
+<DrawerHeader />
+
+<ScrollView>
+  <View style={styles.tabWrapper} >
+          <DrawerTab icon={Images.user} title="Your Profile"/>
+          <DrawerTab icon={Images.notification} title="Notification"/>
+          <DrawerTab icon={Images.favorite} title="Favorites"/>
+          </View>
+<View style={styles.tabWrapper}>
+            <DrawerSectionTitle title={"Special Maps Near You"} onPress={this.handleShowSpecial} icon={this.state.showSpecial ? Images.arrowUp : Images.arrowDown} />
+         { this.state.showSpecial && <View>
+            <DrawerTab avatar={Images.avatar} subTitle="May 1-3"  title="Hop Jam Fest"/>
+            <DrawerTab avatar={Images.avatar} title="Visit Tulsa's Must See Attractions"/>
+        </View>}
+        </View>
+          <View style={styles.tabWrapper} >
+            <DrawerTab icon={Images.feedback} title="Send Us Feedback"/>
+          </View>
+          <View style={styles.tabWrapper} >
+            <DrawerTab  title="Settings" />
+            <DrawerTab  title="Privacy Policy" />
+            <DrawerTab  title="Terms of Service" />
+            <DrawerTab  title="Log Out" style={{color:Colors.blue}} />
+          </View>
+    
+
+</ScrollView>
       </View>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#f6f6f6',
-    paddingTop: 40,
-    paddingHorizontal: 20
-  },
-  uglyDrawerItem: {
-    fontSize: 18,
-    fontWeight: 'bold',
-    color: '#E73536',
-    padding: 15,
-    margin: 5,
-    borderRadius: 2,
-    borderColor: '#E73536',
-    borderWidth: 1,
-    textAlign: 'center'
-  }
-})

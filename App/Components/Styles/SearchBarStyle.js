@@ -29,13 +29,11 @@ export default StyleSheet.create({
     alignSelf: 'center'
   },
   icon: {
-    height: 35,
-    width: 35,
+    height: 30,
+    width: 30,
     resizeMode: "contain",
   },
-  menuIcon: {
-
-  },
+ 
   inputContainer: {
     flex: 2,
     marginHorizontal: 10,

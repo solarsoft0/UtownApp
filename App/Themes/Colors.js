@@ -1,6 +1,9 @@
 const colors = {
-  background: '#1F0808',
+  background: '#ffff',
   clear: 'rgba(0,0,0,0)',
+  ash: '#E6E6E6',
+  deepAsh: '#8A8A8A',
+  blue:'#2269B2',
   facebook: '#3b5998',
   transparent: 'rgba(0,0,0,0)',
   silver: '#F7F7F7',
